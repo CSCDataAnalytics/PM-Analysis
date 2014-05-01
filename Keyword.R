@@ -10,6 +10,11 @@ keyword <- function() {
   { install.packages('RWeka') }
   else { library(RWeka)
   }
+  
+  if (!is.element('SnowballC', installed.packages()[,1]))
+  { install.packages('SnowbalC') }
+  else { library(RWeka)
+  }
 
   print('For questions and debug errors, please contact Adrian. :)')
 
