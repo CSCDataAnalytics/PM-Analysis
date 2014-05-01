@@ -1,19 +1,22 @@
 keyword <- function() {
   
   # Check for packages
-  if (!is.element('tm', installed.packages()[,1]))
-    { install.packages('tm') }
-  else { library(tm)
+  if (!is.element('tm', installed.packages()[,1])) { 
+          install.packages('tm')
+  } else { 
+          library(tm)
   }
   
-  if (!is.element('RWeka', installed.packages()[,1]))
-  { install.packages('RWeka') }
-  else { library(RWeka)
+  if (!is.element('RWeka', installed.packages()[,1])) { 
+          install.packages('RWeka')
+  } else { 
+          library(RWeka)
   }
   
-  if (!is.element('SnowballC', installed.packages()[,1]))
-  { install.packages('SnowballC') }
-  else { library(SnowballC)
+  if (!is.element('SnowballC', installed.packages()[,1])) { 
+          install.packages('SnowballC')
+  } else { 
+          library(SnowballC)
   }
 
   print('For questions and debug errors, please contact Adrian. :)')
