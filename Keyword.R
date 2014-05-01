@@ -12,8 +12,8 @@ keyword <- function() {
   }
   
   if (!is.element('SnowballC', installed.packages()[,1]))
-  { install.packages('SnowbalC') }
-  else { library(RWeka)
+  { install.packages('SnowballC') }
+  else { library(SnowballC)
   }
 
   print('For questions and debug errors, please contact Adrian. :)')
