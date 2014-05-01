@@ -2,7 +2,7 @@ keyword <- function() {
   
   # Check for packages
   if (!is.element('tm', installed.packages()[,1]))
-    { install.packages('pROC') }
+    { install.packages('tm') }
   else { library(tm)
   }
   
@@ -14,14 +14,13 @@ keyword <- function() {
   print('For questions and debug errors, please contact Adrian. :)')
 
   # Interactive input
-  x <- readline('Input text here: ')
+  x <- readline(as.character('Input text here: '))
   word <- readline('Input 1 for one-word keyword and 2 for two-word keyphrase: ')
   
   # Two-Phrase tokenizer Function
   twophrase.tokenizer <- function(x) { NGramTokenizer(x, Weka_control(min = 2, max = 2)) }
   
   if (word == 2) {
-    x <- as.character(x)
     x <- Corpus(VectorSource(x))
     x <- tm_map(x, stripWhitespace) # Whitespace
     x <- tm_map(x, tolower) # Convert to lowercase
@@ -37,12 +36,11 @@ keyword <- function() {
     key <- sort(rowSums(as.matrix(tdm)), decreasing = T) # Sum of frequency of words
     key.df <- data.frame(keyword = names(key), freq = key) # Convert keyword frequency to DF
     
-    head(key.df, n=20)
+    print(head(key.df, n=20))
     write.csv(key.df, file='./2-Word Keyphrase.csv')
     print('The two-word keyphrase file has been saved in your working directory.')
     
     } else if (word == 1) {
-      x <- as.character(x)
       x <- Corpus(VectorSource(x))
       x <- tm_map(x, stripWhitespace) # Whitespace
       x <- tm_map(x, tolower) # Convert to lowercase
@@ -58,7 +56,7 @@ keyword <- function() {
       key <- sort(rowSums(as.matrix(tdm)), decreasing = T) # Sum of frequency of words
       key.df <- data.frame(keyword = names(key), freq = key) # Convert keyword frequency to DF
       
-      head(key.df, n=20)
+      print(head(key.df, n=20))
       write.csv(key.df, file='./1 Word Keyword.csv')
       print('The one-word keyword file has been saved in your working directory.')
       
