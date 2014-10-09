@@ -19,10 +19,13 @@ keyword <- function() {
           library(SnowballC)
   }
 
-  print('For questions and debug errors, please contact Adrian. :)')
-
-  # Interactive input
+    # Interactive input
+  endofinput <- ""
+  totalstr <- ""
   x <- readline(as.character('Input text here: '))
+  while(! endofinput == (x <- readline('prompt (empty string when done): ')))
+          totalstr <- paste(totalstr, x)
+  
   word <- readline('Input 1 for one-word keyword and 2 for two-word keyphrase: ')
   
   # Two-Phrase tokenizer Function
